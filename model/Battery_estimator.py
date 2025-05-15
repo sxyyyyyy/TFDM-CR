@@ -26,9 +26,9 @@ from trainer import Trainer
 from feature import fourier_time_features_from_frequency,lags_for_fourier_time_features_from_frequency
 from estimator import PyTorchEstimator
 from utils import get_module_forward_input_names
-from time_grad_network import TimeGradPredictionNetwork,TimeGradTrainingNetwork
+from prediction_network import PredictionNetwork,TrainingNetwork
 
-class TimeGradEstimator(PyTorchEstimator):
+class Battery_Estimator(PyTorchEstimator):
     def __init__(
         self,
         input_size: int,
@@ -178,9 +178,9 @@ class TimeGradEstimator(PyTorchEstimator):
             )
         )
 
-    def create_training_network(self, device: torch.device) -> TimeGradTrainingNetwork:
+    def create_training_network(self, device: torch.device) -> TrainingNetwork:
 
-        training_network = TimeGradTrainingNetwork(
+        training_network = TrainingNetwork(
             input_size=self.input_size,
             target_dim=self.target_dim,
             num_layers=self.num_layers,
@@ -212,10 +212,10 @@ class TimeGradEstimator(PyTorchEstimator):
     def create_predictor(
         self,
         transformation: Transformation,
-        trained_network: TimeGradTrainingNetwork,
+        trained_network: TrainingNetwork,
         device: torch.device,
     ) -> Predictor:
-        prediction_network = TimeGradPredictionNetwork(
+        prediction_network = PredictionNetwork(
             input_size=self.input_size,
             target_dim=self.target_dim,
             num_layers=self.num_layers,
