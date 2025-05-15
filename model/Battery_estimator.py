@@ -1,5 +1,4 @@
 from typing import List, Optional
-
 import torch
 import numpy as np
 from gluonts.dataset.field_names import FieldName
