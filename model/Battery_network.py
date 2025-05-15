@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from CR_compensate import CR_compensate
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
     
-class TimeGradTrainingNetwork(nn.Module):
+class TrainingNetwork(nn.Module):
     @validated()
     def __init__(
         self,
@@ -272,7 +272,7 @@ class TimeGradTrainingNetwork(nn.Module):
         
         return (loss.mean(), likelihoods, distr_args)
 
-class TimeGradPredictionNetwork(TimeGradTrainingNetwork):
+class PredictionNetwork(TrainingNetwork):
     def __init__(self, num_parallel_samples: int,**kwargs) -> None:
         super().__init__(**kwargs)
         self.num_parallel_samples = num_parallel_samples
