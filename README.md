@@ -12,4 +12,4 @@ We proposes a diﬀusion model framework incorporating capacity regeneration phe
 - gluonts==0.9.6
 
 # 3. Training and Testing
-You can perform Capacity prediction on two datasets in the two files: 'main_NASA.ipynb', 'main_calce.ipynb'.
+You can perform Capacity prediction on two datasets in the two files: 'main_nasa.ipynb', 'main_calce.ipynb'.
